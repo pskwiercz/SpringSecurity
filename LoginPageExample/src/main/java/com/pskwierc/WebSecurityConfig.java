@@ -20,12 +20,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/home").permitAll()
                 .anyRequest().authenticated()
                 .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll();
                 .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
+                    .loginPage("/login")
+                    .permitAll()
+                    .defaultSuccessUrl("/hello")
+                    .failureUrl("/login?error")
+                    .and()
                 .logout()
-                .permitAll();
+                    //.logoutSuccessUrl("/login.html?logout=true")
+                    .permitAll();
     }
 
     @Bean
